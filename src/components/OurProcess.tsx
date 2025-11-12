@@ -43,7 +43,7 @@ const OurProcess = () => {
           </div>
           
           <div className=" relative max-w-[990px] max-h-[530px] pt-3 m-2 lg:m-0 lg:pt-0">
-              <img src="/ourprocess-img.jpg" className="w-full h-full object-cover rounded-[15px] relative z-10 brightness-75 " alt="img" />
+              <img src="/images/ourprocess-img.jpg" className="w-full h-full object-cover rounded-[15px] relative z-10 brightness-75 " alt="img" />
               <div className="w-full h-full border-b-2 lg:border-r-2 border-[#C4B99D] absolute rounded-[15px] top-[3%] lg:top-[39px] lg:left-[16px] z-0"></div>
           </div>
         </div>

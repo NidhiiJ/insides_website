@@ -16,7 +16,7 @@ export default {
         75: '.75',
       },
       backgroundImage: {
-        'contactus-image': "url('/contactusbg.png')",
+        'contactus-image': "url('/images/contactusbg.png')",
       }
     },
     screens: {

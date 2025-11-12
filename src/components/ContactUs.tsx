@@ -39,10 +39,10 @@ const ContactUs:React.FC<ContactUsProps>  = ({setName}) => {
 
             <div className="content-end flex flex-row gap-4 px-2 pb-4">
               <a href="" id="twitter">
-                <img src="/twitter.svg" className="h-4 " alt="twitter" />
+                <img src="/svg/twitter.svg" className="h-4 " alt="twitter" />
               </a>
               <a href="" id="instagram">
-              <img src="/instagram.svg" className="h-4" alt="instagram" />
+              <img src="/svg/instagram.svg" className="h-4" alt="instagram" />
               </a>
               {/* <i>icon3</i> */}
             </div>

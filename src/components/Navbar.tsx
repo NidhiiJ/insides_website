@@ -12,7 +12,7 @@ const BurgerMenu: React.FC<BurgerProps> = ({ handleBurgerClick }) => {
       style={{ transition: "top 0.5s ease" }}
       onClick={handleBurgerClick}
     >
-      <img src="close-icon.svg" className="hidden absolute top-3 right-5 h-6" onClick={handleBurgerClick}/>
+      <img src="/svg/close-icon.svg" className="hidden absolute top-3 right-5 h-6" onClick={handleBurgerClick}/>
       <Link to='/WhyUs'>WHAT WE DO</Link>
       <Link to='/Portfolio'>PROJECTS</Link>
       <Link to='/WhoAreWe'>ABOUT US</Link>
@@ -58,7 +58,7 @@ const Navbar = () => {
       {showMenu ? (
         <div className="burger md:hidden ">
           <img
-            src="close-icon.svg"
+            src="/svg/close-icon.svg"
             className="h-7 transition-all ease-in-out"
             alt="close"
             onClick={handleBurgerClick}
@@ -69,7 +69,7 @@ const Navbar = () => {
       ) : (
         <div className="burger md:hidden ">
           <img
-            src="hamburger-menu.svg"
+            src="/svg/hamburger-menu.svg"
             className="h-7 transition-all duration-500 ease-in-out"
             alt="burger menu"
             onClick={handleBurgerClick}

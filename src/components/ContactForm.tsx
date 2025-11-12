@@ -151,7 +151,7 @@ const ContactForm:React.FC<ContactFormProps> = ({setName}) => {
                 <span className="pr-4 text-[12px] md:text-[18px]">
                   Submit Inquiry
                 </span>
-                <img src="/arrow-black.png" alt="arrow img" />
+                <img src="/images/arrow-black.png" alt="arrow img" />
               </button>
             </div>
            </Form >

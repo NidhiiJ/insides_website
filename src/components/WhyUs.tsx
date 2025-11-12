@@ -9,28 +9,28 @@ interface ContentProps {
 const WhyUs = () => {
     const content:ContentProps[]=[
         {   heading:'heading1',
-            url:'/whyus-1.png',
+            url:'/images/whyus-1.png',
             text: 'We manage your property from A to Z: Tenant search, reception, maintenance.'
         },
         {
             heading:'heading2',
-            url:'/whyus-2.png',
+            url:'/images/whyus-2.png',
             text: 'Each month, we guarantee your rent, whatever the occupancy rate.'
         },
         { heading:'heading3',
-            url:'/whyus-3.png',
+            url:'/images/whyus-3.png',
             text: 'You can recover your property whenever you want, the lease is concluded.'
         },
          { heading:'heading4',
-            url:'/whyus-1.png',
+            url:'/images/whyus-1.png',
             text: 'We manage your property from A to Z: Tenant search, reception, maintenance.'
         },
          { heading:'heading5',
-            url:'/whyus-2.png',
+            url:'/images/whyus-2.png',
             text: 'Each month, we guarantee your rent, whatever the occupancy rate.'
         },
          { heading:'heading6',
-            url:'/whyus-3.png',
+            url:'/images/whyus-3.png',
             text: 'You can recover your property whenever you want, the lease is concluded.'
         },
     ]
