@@ -40,7 +40,7 @@ const projectdata: Project[] = [
       { src: '/images/project-images/bhushi-lonavala/img3.jpeg', alt: 'Bhushi Lonavala project image 3' },
       { src: '/images/project-images/bhushi-lonavala/img4.jpeg', alt: 'Bhushi Lonavala project image 4' },
       { src: '/images/project-images/bhushi-lonavala/img5.jpeg', alt: 'Bhushi Lonavala project image 5' },
-      { src: '/images/project-images/bhushi-lonavala/img6.PNG', alt: 'Bhushi Lonavala project image 6' },
+      { src: '/images/project-images/bhushi-lonavala/img6.png', alt: 'Bhushi Lonavala project image 6' },
       { src: '/images/project-images/bhushi-lonavala/img7.jpeg', alt: 'Bhushi Lonavala project image 7' },
       { src: '/images/project-images/bhushi-lonavala/img8.jpeg', alt: 'Bhushi Lonavala project image 8' },
       { src: '/images/project-images/bhushi-lonavala/img9.jpeg', alt: 'Bhushi Lonavala project image 9' },
@@ -62,6 +62,7 @@ const projectdata: Project[] = [
       { src: '/images/project-images/lalbaug-mumbai/img7.jpg', alt: 'Lalbaug Mumbai project image 7' },
       { src: '/images/project-images/lalbaug-mumbai/img8.jpeg', alt: 'Lalbaug Mumbai project image 8' },
       { src: '/images/project-images/lalbaug-mumbai/img9.jpeg', alt: 'Lalbaug Mumbai project image 9' },
+      { src: '/images/project-images/lalbaug-mumbai/img10.jpg', alt: 'Lalbaug Mumbai project image 10' },
     ]
   },
   {
