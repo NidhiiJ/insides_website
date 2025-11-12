@@ -32,8 +32,28 @@ const Portfolio: React.FC<PortfolioProps> = ({windowSize}) => {
       </div>
       <div className='p-5 grid grid-flow-col overflow-x-auto'>
         {windowSize <= 768
-        ? projects.slice(0,4).map((x,index)=> <ImageCard  key={index} windowSize={windowSize} paddingTop={false} imagePath={x.image} title={x.title} description={x.description}/>)
-        : projects.map((x,index)=> <ImageCard key={index} windowSize={windowSize} paddingTop={x.paddingTop} imagePath={x.image} title={x.title} description={x.description}/>)
+        ? projects.slice(0,4).map((project)=> (
+          <ImageCard
+            key={project.slug}
+            windowSize={windowSize}
+            paddingTop={false}
+            imagePath={project.image}
+            title={project.title}
+            location={project.location}
+            slug={project.slug}
+          />
+        ))
+        : projects.map((project, index)=> (
+          <ImageCard
+            key={project.slug}
+            windowSize={windowSize}
+            paddingTop={index % 2 === 0}
+            imagePath={project.image}
+            title={project.title}
+            location={project.location}
+            slug={project.slug}
+          />
+        ))
         }
       </div>
     </div>
