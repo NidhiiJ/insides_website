@@ -17,10 +17,12 @@ const Home:React.FC<HomeProps> = ({windowSize,setName}) => {
   return (
     <div id='home'  className='flex flex-col gap-14 md:gap-40 '>
       <HeroSection windowSize={windowSize} />
-      <WhoAreWe/>
+      <div data-aos="fade-up">
+        <WhoAreWe/>
+      </div>
       <OurProcess/>
-      <WhyUs/>
       <Portfolio windowSize={windowSize}/>
+      <WhyUs/>
       <Testimonials  windowSize={windowSize}/>
       <ContactUs setName={setName}/>
     </div>

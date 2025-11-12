@@ -30,7 +30,7 @@ const Portfolio: React.FC<PortfolioProps> = ({windowSize}) => {
           </button>
         </div>
       </div>
-      <div className='p-5 grid grid-flow-col overflow-x-auto'>
+      <div data-aos="fade-up" data-aos-delay={400} className='p-5 grid grid-flow-col overflow-x-auto'>
         {windowSize <= 768
         ? projects.slice(0,4).map((project)=> (
           <ImageCard

@@ -12,6 +12,9 @@ import ProjectDetail from "./pages/ProjectDetail";
 import ContactUsPage from "./pages/ContactUs";
 import AboutUsPage from "./pages/AboutUs";
 import WhyUsPage from "./pages/WhyUs";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 function App() {
   const [windowSize, setwindowSize] = useState(window.screen.width);
@@ -27,6 +30,14 @@ function App() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+  }, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 800,      // animation duration (ms)
+      easing: 'ease-in-out',
+      once: true,         // animate only once
+      mirror: false,      // don't animate again when scrolling back up
+    });
   }, []);
 
   const router = [

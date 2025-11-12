@@ -35,7 +35,7 @@ const OurProcess = () => {
         <div className="">
           <div className="text-center lg:text-start text-[32px] md:text-[43px] lg:text-[54px] font-Maharlika pb-6">Our Process</div>
           <div className="relative">
-          <div className=" lg:absolute w-full lg:w-[480px] bg-[#3f3c33] lg:bg-[#00000090] backdrop-blur-lg  lg:rounded-[15px] lg:left-[30em] lg:top-[-6em] z-20 mt-5 py-5">
+          <div data-aos="fade-down" className=" lg:absolute w-full lg:w-[480px] bg-[#3f3c33] lg:bg-[#00000090] backdrop-blur-lg  lg:rounded-[15px] lg:left-[30em] lg:top-[-6em] z-20 mt-5 py-5">
             <TextCard num ={1}/>
             <TextCard num ={2}/>
             <TextCard num={3}/>

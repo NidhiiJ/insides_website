@@ -49,7 +49,7 @@ const HeroSection:React.FC<HeroProps> = ({windowSize}) => {
           <span className="absolute top-40">yo</span>
           <div className="absolute bottom-52"><img src="/svg/homepage-arrow.svg" alt="arrow img" className="h-[85px]"/></div>
         </div> */}
-        <div className="flex flex-col items-center mx-10 md:mx-14 lg:mx-18 p-3 " > 
+        <div data-aos="fade-up" className="flex flex-col items-center mx-10 md:mx-14 lg:mx-18 p-3 " > 
           <span className="text-center text-[24px] md:text-[34px] lg:text-[48px] font-Maharlika ">
             Build your dream Home curated and personalized  by <br />
             <span className=" text-[32px] md:text-[43px] lg:text-[54px]  text-[#C4B99D] font-medium">
