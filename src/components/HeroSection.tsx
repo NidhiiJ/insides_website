@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 interface HeroImageProps {
   leftOrRight: "left" | "right";
@@ -57,12 +58,12 @@ const HeroSection:React.FC<HeroProps> = ({windowSize}) => {
           </span>
           <br />
           <span className=" text-md md:text-lg md:font-thin py-4 text-center">Elevating spaces with timeless elegance and innovative design solutions,, where every corner tells a story of refined craftsmanship and personalized style.</span>
-          <a href="#contact-us" className="border border-white rounded-full hover:bg-[#ffffff18] py-2 px-8 font-inter flex flex-row items-center font-[600] max-md:mt-5" >
+          <Link to="/ContactUs" className="border border-white rounded-full hover:bg-[#ffffff18] py-2 px-8 font-inter flex flex-row items-center font-[600] max-md:mt-5" >
             <span className="pr-4 text-[14px] md:text-[20px] font-Maharlika">
               Schedule a Call
             </span>
             <img src="/images/arrow.png" alt="arrow img" />
-          </a>
+          </Link>
         </div>
         {/* <div className="h-full">
           <span className="absolute top-40">yo</span>
