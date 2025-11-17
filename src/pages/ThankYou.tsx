@@ -2,7 +2,7 @@
 
 const ThankYou = ({name}:{name:string}) => {
   return (
-    <div className=" text-center font-Maharlika p-5 flex flex-col gap-2 md:gap- ">
+    <div className=" text-center font-Maharlika p-5 flex flex-col gap-2 md:gap-5 mt-10 md:mt-20 ">
       <span className="text-[26px] md:text-[36px] lg:text-[40px]">
         Hi {name} !
         </span><br />

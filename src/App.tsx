@@ -2,15 +2,19 @@
 import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
-import WhoAreWe from "./components/WhoAreWe";
-import WhyUs from "./components/WhyUs";
 import { Route, Routes } from "react-router-dom";
 import ThankYou from "./pages/ThankYou";
 import { GoToTopButton } from "./components/GoToTopButton";
 import PortfolioPage from "./pages/PorfolioPage";
 import OurProcess from "./components/OurProcess";
+import ProjectDetail from "./pages/ProjectDetail";
+import ContactUsPage from "./pages/ContactUs";
+import AboutUsPage from "./pages/AboutUs";
+import WhyUsPage from "./pages/WhyUs";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 function App() {
   const [windowSize, setwindowSize] = useState(window.screen.width);
@@ -27,6 +31,14 @@ function App() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 800,      // animation duration (ms)
+      easing: 'ease-in-out',
+      once: true,         // animate only once
+      mirror: false,      // don't animate again when scrolling back up
+    });
+  }, []);
 
   const router = [
     {
@@ -35,7 +47,7 @@ function App() {
     },
     {
       path: "/ContactUs",
-      element: <ContactUs setName={setName} />,
+      element: <ContactUsPage setName={setName} />,
     },
     {
       path: "/Portfolio",
@@ -43,11 +55,11 @@ function App() {
     },
     {
       path: "/WhoAreWe",
-      element: <WhoAreWe />,
+      element: <AboutUsPage />,
     },
     {
       path: "/WhyUs",
-      element: <WhyUs />,
+      element: <WhyUsPage />,
     },
     {
       path: "/ThankYou",
@@ -57,11 +69,15 @@ function App() {
       path: "/OurProcess",
       element: <OurProcess/>
     },
+    {
+      path: "/projects/:slug",
+      element: <ProjectDetail/>
+    },
   ];
 
   return (
     <div id='app' className="h-screen flex flex-col justify-between">
-      <section className="mb-10 md:mb-20">
+      <section>
         <Navbar />
       </section>
       <Routes>

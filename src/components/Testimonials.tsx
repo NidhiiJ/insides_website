@@ -16,22 +16,22 @@ interface Tcardprops {
 const testimonials = [
   {
     name:'John Doe',
-    image: 'testimonial-1.jpg',
+    image: '/images/testimonial-1.jpg',
     text:'Transforming our space into a masterpiece, the interior design expertise of INSIDES exceeded our expectations.',
   },
   {
     name:'Swami Doe',
-    image: 'testimonial-2.jpg',
+    image: '/images/testimonial-2.jpg',
     text:'the interior design expertise of INSIDES exceeded our expectations, seamlessly blending creativity and functionality.',
   },
   {
     name:'Honey Singh',
-    image: 'testimonial-3.jpg',
+    image: '/images/testimonial-3.jpg',
     text:'Transforming our space into a masterpiece.',
   },
   {
     name:'Adele ',
-    image: 'testimonial-1.jpg',
+    image: '/images/testimonial-1.jpg',
     text:'Transforming .',
   }
 ]
@@ -40,7 +40,7 @@ const TestimonialCard = (props: Tcardprops) => {
   return (
     <div className=" grid grid-rows-auto justify-items-center items-start gap-2 h-full w-[280px] lg:w-[350px] bg-white text-black rounded-xl drop-shadow-md p-2 mb-10 lg:mb-0 overflow-y-auto">
       
-      <img src="testimonial-logo.svg" alt="" className="h-9 mt-4 object-contain" />
+      <img src="/svg/testimonial-logo.svg" alt="" className="h-9 mt-4 object-contain" />
       <p className="text-[14px] lg:text-[16px] mx-4 mt-4 h-3/4 ">{props.text}</p>
       <div className="flex flex-col items-center pb-5 mt-3">
         <div className="h-[2px] w-1/4 bg-black"></div>
@@ -69,7 +69,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({windowSize}) => {
 
         <div className="flex justify-center items-center">
           <div className="hidden md:block image-swiper-button-prev hover:cursor-pointer transform rotate-180 p-2 md:p-10">
-            <img src="testimonial-arrow.svg" alt="prev-button" />
+            <img src="/svg/testimonial-arrow.svg" alt="prev-button" />
           </div>
           <Swiper
             spaceBetween={10}
@@ -109,7 +109,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({windowSize}) => {
             
           </Swiper>
           <div className="hidden md:block image-swiper-button-next hover:cursor-pointer p-2 md:p-10">
-            <img src="testimonial-arrow.svg" alt="next-button" />
+            <img src="/svg/testimonial-arrow.svg" alt="next-button" />
           </div>
         </div>
       </div>

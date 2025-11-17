@@ -24,10 +24,10 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center md:justify-between mt-5">
             <div className="flex gap-3">
             <a href="" id="twitter" className="p-2 border-[#051d1d5c] border rounded-full">
-            <img src="/twitter.svg" className="h-4" alt="twitter" style={{ filter: 'invert(80%)' }} />
+            <img src="/svg/twitter.svg" className="h-4" alt="twitter" style={{ filter: 'invert(80%)' }} />
               </a>
               <a href="" id="instagram" className="p-2 border-[#051d1d5c] border rounded-full">
-              <img src="/instagram.svg" className="h-4" alt="instagram" style={{ filter: 'invert(80%)' }} />
+              <img src="/svg/instagram.svg" className="h-4" alt="instagram" style={{ filter: 'invert(80%)' }} />
               </a>
             </div>
             <span className="text-center"><a href="www.flaykstudio.com">© 2024 Flayk Studio, All rights reserved</a></span>
