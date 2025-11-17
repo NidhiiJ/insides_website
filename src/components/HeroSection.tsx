@@ -39,7 +39,7 @@ const HeroSection:React.FC<HeroProps> = ({windowSize}) => {
   return (
     <div id='hero-section' className="relative bg-cover bg-center mt-10 md:mt-20" style={{backgroundImage: windowSize < 768 ? 'url(/images/ourprocess-img.jpg)': 'none'}}>
       <div className="absolute md:hidden inset-0 bg-gradient-to-b from-[#031212] to-[#0312127b] "></div>
-      <div className="relative pt-5 pb-8 md:flex flex-row justify-between items gap-10 items-center w-full h-full overflow-x-hidden z-10 ">
+      <div className="relative pt-5 pb-8 md:flex flex-row justify-between items gap-10 items-center w-full h-full overflow-x-clip z-10 ">
       
         <HeroImage
           leftOrRight="left"

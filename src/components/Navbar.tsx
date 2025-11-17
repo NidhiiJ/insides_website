@@ -1,89 +1,253 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
-interface BurgerProps {
-  handleBurgerClick: React.MouseEventHandler;
+interface NavItem {
+  to: string;
+  label: string;
 }
 
-const BurgerMenu: React.FC<BurgerProps> = ({ handleBurgerClick }) => {
+const LEFT_LINKS: NavItem[] = [
+  { to: "/WhyUs", label: "WHAT WE DO" },
+  { to: "/Portfolio", label: "PROJECTS" },
+];
+
+const RIGHT_LINKS: NavItem[] = [
+  { to: "/WhoAreWe", label: "ABOUT US" },
+  { to: "/ContactUs", label: "CONTACT US" },
+];
+
+interface BurgerMenuProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
   return (
-    <nav
-      className="absolute p-10 pt-14 top-16 right-0 flex flex-col justify-center items-center gap-6 bg-[#686354e9] font-semibold text-white rounded-l-md z-50 overflow-y-auto"
-      style={{ transition: "top 0.5s ease" }}
-      onClick={handleBurgerClick}
-    >
-      <img src="/svg/close-icon.svg" className="hidden absolute top-3 right-5 h-6" onClick={handleBurgerClick}/>
-      <Link to='/WhyUs'>WHAT WE DO</Link>
-      <Link to='/Portfolio'>PROJECTS</Link>
-      <Link to='/WhoAreWe'>ABOUT US</Link>
-      <Link to='/ContactUs'>CONTACT US</Link>
-    </nav>
+    <>
+      {/* Backdrop */}
+      <button
+        type="button"
+        aria-label="Close navigation menu"
+        className="fixed inset-0 z-40 bg-black/40 md:hidden"
+        onClick={onClose}
+      />
+
+      {/* Slide-in panel */}
+      <nav
+        id="mobile-nav"
+        className="
+          fixed top-0 right-0 h-full w-64
+          bg-[#686354e9] text-white
+          flex flex-col gap-6 pt-16 pb-10 px-8
+          font-semibold
+          shadow-xl
+          transform transition-transform duration-300 ease-out
+          md:hidden
+          z-[100]
+        "
+        aria-label="Mobile navigation"
+      >
+        {/* Close button */}
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close navigation menu"
+          className="absolute top-4 right-4 h-7 w-7 flex items-center justify-center"
+        >
+          <img src="/svg/close-icon.svg" className="h-6 w-6" alt="Close menu" />
+        </button>
+
+        {[...LEFT_LINKS, ...RIGHT_LINKS].map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            onClick={onClose}
+            className={({ isActive }) =>
+              [
+                "transition-all",
+                "text-sm tracking-wide",
+                isActive
+                  ? "underline underline-offset-8"
+                  : "font-normal hover:font-semibold",
+              ].join(" ")
+            }
+          >
+            {link.label}
+          </NavLink>
+        ))}
+      </nav>
+    </>
   );
 };
 
-const Navbar = () => {
-  // burger menu
-  const [showMenu, setshowMenu] = useState(false);
-  // nav sticky
-  const [isTop, setIsTop] = useState(true);
+interface NavBarInnerProps {
+  variant: "main" | "fixed";
+  showMenu: boolean;
+  toggleMenu: () => void;
+}
 
-    useEffect(() => {
-      const handleScroll = () => {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        setIsTop(scrollTop === 0);
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-  
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, []);
-
-  const handleBurgerClick = () => {
-    setshowMenu(!showMenu);
-  };
-
+const NavBarInner: React.FC<NavBarInnerProps> = ({
+  variant,
+  showMenu,
+  toggleMenu,
+}) => {
+  const isFixed = variant === "fixed";
 
   return (
-    <div className={`flex flex-row justify-between bg-[#00000089] ${isTop ? '' : 'fixed  transition-all'} w-full py-3 px-8 z-[51]`}>
-    {/* <div className={`flex flex-row justify-between bg-[#00000089]  w-full py-3 px-8  z-[51]`}> */}
-      <div className="hidden md:flex flex-row gap-4 lg:gap-12 ml-[5%]">
-      <NavLink to='/WhyUs' className={({isActive})=> isActive ?'transition-all underline underline-offset-8':"transition-all font-normal hover:font-semibold"}>WHAT WE DO</NavLink>
-      
-      <NavLink to='/Portfolio' className={({isActive})=> isActive ?'transition-all underline underline-offset-8':"transition-all font-normal hover:font-semibold"}>PROJECTS</NavLink>
-      </div>
-      <NavLink to='/' className=' font-Maharlika text-[26px] text-[#C4B99D] font-medium'>INSIDES</NavLink>
+    <div
+      className={`
+        flex flex-row items-center justify-between
+        bg-[#00000089] backdrop-blur
+        py-3 px-6 md:px-8
+        transition-all
+        ${isFixed ? "shadow-md" : ""}
+      `}
+    >
+      {/* Left links (desktop) */}
+      <nav
+        className="hidden md:flex flex-row gap-4 lg:gap-12 ml-[5%]"
+        aria-label={isFixed ? "Secondary navigation left" : "Primary navigation left"}
+      >
+        {LEFT_LINKS.map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            className={({ isActive }) =>
+              [
+                "transition-all",
+                "font-normal hover:font-semibold",
+                isActive && "underline underline-offset-8",
+              ]
+                .filter(Boolean)
+                .join(" ")
+            }
+          >
+            {link.label}
+          </NavLink>
+        ))}
+      </nav>
 
-      {showMenu ? (
-        <div className="burger md:hidden ">
-          <img
-            src="/svg/close-icon.svg"
-            className="h-7 transition-all ease-in-out"
-            alt="close"
-            onClick={handleBurgerClick}
-          />
+      {/* Logo / Brand */}
+      <Link
+        to="/"
+        className={`
+          font-Maharlika
+          ${isFixed ? "text-[22px] md:text-[24px]" : "text-[24px] md:text-[26px]"}
+          text-[#C4B99D] font-medium tracking-[0.15em]
+        `}
+        aria-label="Go to homepage"
+      >
+        INSIDES
+      </Link>
 
-          <BurgerMenu handleBurgerClick={handleBurgerClick} />
-        </div>
-      ) : (
-        <div className="burger md:hidden ">
-          <img
-            src="/svg/hamburger-menu.svg"
-            className="h-7 transition-all duration-500 ease-in-out"
-            alt="burger menu"
-            onClick={handleBurgerClick}
+      {/* Burger (mobile) */}
+      <button
+        type="button"
+        className="md:hidden h-8 w-8 flex items-center justify-center"
+        onClick={toggleMenu}
+        aria-label={showMenu ? "Close navigation menu" : "Open navigation menu"}
+        aria-expanded={showMenu}
+        aria-controls="mobile-nav"
+      >
+        {!showMenu && <img
+          src={"/svg/hamburger-menu.svg"}
+          className="h-7 w-7 transition-transform duration-200 ease-in-out"
+          alt={"Open menu"}
+        />}
+      </button>
+
+      {/* Right links (desktop) */}
+      <nav
+        className="hidden md:flex flex-row gap-4 lg:gap-12 mr-[5%]"
+        aria-label={isFixed ? "Secondary navigation right" : "Primary navigation right"}
+      >
+        {RIGHT_LINKS.map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            className={({ isActive }) =>
+              [
+                "transition-all",
+                "font-normal hover:font-semibold",
+                isActive && "underline underline-offset-8",
+              ]
+                .filter(Boolean)
+                .join(" ")
+              }
+            >
+              {link.label}
+            </NavLink>
+          ))}
+      </nav>
+    </div>
+  );
+};
+
+const Navbar: React.FC = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  const [showFixedNav, setShowFixedNav] = useState(false);
+  const location = useLocation();
+
+  // Toggle fixed navbar after scrolling ~5rem (~80px)
+  useEffect(() => {
+    const THRESHOLD = 80; // pixels ≈ 5rem at 16px base
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      setShowFixedNav(scrollTop > THRESHOLD);
+    };
+
+    handleScroll(); // initialize
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setShowMenu(false);
+  }, [location.pathname]);
+
+  // Close on Esc when menu is open
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setShowMenu(false);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [showMenu]);
+
+  const toggleMenu = () => setShowMenu((prev) => !prev);
+
+  return (
+    <>
+      {/* MAIN NAVBAR (relative, scrolls away) */}
+      <header className="w-full relative z-[51]">
+        <NavBarInner
+          variant="main"
+          showMenu={showMenu}
+          toggleMenu={toggleMenu}
+        />
+      </header>
+
+      {/* FIXED NAVBAR (appears after scroll) */}
+      {showFixedNav && (
+        <div className="fixed top-0 left-0 w-full z-[60]">
+          <NavBarInner
+            variant="fixed"
+            showMenu={showMenu}
+            toggleMenu={toggleMenu}
           />
         </div>
       )}
 
-      <div className="hidden md:flex flex-row gap-4 lg:gap-12 mr-[5%]">
-      <NavLink to='/WhoAreWe' className={({isActive})=> isActive ?'transition-all underline underline-offset-8':"transition-all font-normal hover:font-semibold"}>ABOUT US</NavLink>
-      <NavLink to='/ContactUs' className={({isActive})=> isActive ?'transition-all underline underline-offset-8':"transition-all font-normal hover:font-semibold"}>CONTACT US</NavLink>
-      </div>
-     
-    </div>
-
+      {/* Shared mobile menu overlay */}
+      <BurgerMenu isOpen={showMenu} onClose={() => setShowMenu(false)} />
+    </>
   );
 };
 
